@@ -1,0 +1,32 @@
+{
+  "name": "lead-funnel-service",
+  "version": "1.0.0",
+  "description": "Lead funnel service - Leadsales SWE technical test",
+  "main": "dist/index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts",
+    "build": "tsc",
+    "dev": "ts-node --watch src/index.ts",
+    "test": "jest --passWithNoTests",
+    "test:watch": "jest --watch",
+    "test:coverage": "jest --coverage"
+  },
+  "dependencies": {
+    "typescript": "^5.0.0",
+    "ts-node": "^10.9.0",
+    "@types/node": "^20.0.0"
+  },
+  "devDependencies": {
+    "jest": "^29.0.0",
+    "ts-jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  },
+  "keywords": [
+    "leads",
+    "funnel",
+    "crm",
+    "ddd",
+    "hexagonal-architecture"
+  ],
+  "license": "UNLICENSED"
+}
