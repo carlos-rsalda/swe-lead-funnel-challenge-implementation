@@ -53,6 +53,20 @@ committing took a few minutes on top of that. The split is the part worth statin
 layer went green in about fifteen minutes because the decisions above and the tests were already
 fixed before a line of it was written.
 
+**What the tests cover, and what they do not.** Every file that implements a business rule is at
+100% of statements, branches and functions. Three things are deliberately left out. The `typeof`
+guard in `PhoneNumber` is unreachable from TypeScript and exists for untyped JSON. In the HTTP
+handler, both routes, the 204 and the defensive reading of a missing field are covered, but the
+remaining error-to-status branches are not: each one is an `instanceof` mapping to the status this
+document already justifies, and a test would restate the table rather than check it. And `index.ts`
+has no tests — it is the simulation the brief asks for, and `npm start` runs it.
+
+Two kinds of test double, on purpose. The use-case tests run against a fake repository that records
+its calls, because asserting that the occupancy is *never queried* needs a double and is not
+observable against the real adapter. `tests/integration` wires the real repository to the use cases,
+and the handler tests go through the adapter as well — a typo in a route path is the one failure no
+other suite could catch, since every other suite calls the use cases directly.
+
 **AI usage.** Two agents were used, deliberately kept apart:
 
 - one for the design and the implementation;
